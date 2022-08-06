@@ -1,0 +1,4 @@
+ubuntusway-welcome.py                  /usr/bin/
+resources/logo.png                     /usr/share/ubuntusway-welcome/
+resources/ubuntusway.png               /usr/share/pixmaps/
+resources/ubuntusway-welcome.desktop   /usr/share/applications/

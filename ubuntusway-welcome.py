@@ -104,7 +104,7 @@ class Window1(QWidget):
         btnGparted.clicked.connect(self.on_clicked_btnGparted)
 
         label = QLabel()
-        pixmap = QPixmap("resources/logo.png")
+        pixmap = QPixmap("/usr/share/ubuntusway-welcome/logo.png")
         pixmap = pixmap.scaled(600, 300, Qt.KeepAspectRatio)
         label.setPixmap(pixmap)
 
@@ -242,7 +242,7 @@ class Window2(QWidget):
         btnUpd.clicked.connect(self.on_clicked_btnUpd)
 
         label = QLabel()
-        pixmap = QPixmap("resources/logo.png")
+        pixmap = QPixmap("/usr/share/ubuntusway-welcome/logo.png")
         pixmap = pixmap.scaled(600, 300, Qt.KeepAspectRatio)
         label.setPixmap(pixmap)
 
