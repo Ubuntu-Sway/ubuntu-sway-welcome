@@ -286,9 +286,15 @@ class ShellSelectWindow(QWidget):
         self.setFixedSize(400, 150)
         self.setWindowTitle("Change shell")
         self.setupUi()
-        vbox3 = QVBoxLayout()
-        vbox3.addWidget(self.groupBox3)
-        self.setLayout(vbox3)
+        self.vbox3 = QVBoxLayout()
+        self.buttonBox = QDialogButtonBox()
+        self.buttonBox.addButton("Apply", QDialogButtonBox.AcceptRole)
+        self.buttonBox.addButton("Close", QDialogButtonBox.RejectRole)
+        self.buttonBox.accepted.connect(self.apply)
+        self.buttonBox.rejected.connect(self.cancel)
+        self.vbox3.addWidget(self.groupBox3)
+        self.vbox3.addWidget(self.buttonBox)
+        self.setLayout(self.vbox3)
         self.show()
 
     def setupUi(self):
@@ -301,17 +307,11 @@ class ShellSelectWindow(QWidget):
         self.btnBash.setChecked(True)
         self.btnZSH = QRadioButton("ZSH")
         self.btnFish = QRadioButton("Fish")
-        self.buttonBox = QDialogButtonBox()
-        self.buttonBox.addButton("Apply", QDialogButtonBox.AcceptRole)
-        self.buttonBox.addButton("Close", QDialogButtonBox.RejectRole)
-        self.buttonBox.accepted.connect(self.apply)
-        self.buttonBox.rejected.connect(self.cancel)
 
         Hlayout.addWidget(self.btnBash)
         Hlayout.addWidget(self.btnZSH)
         Hlayout.addWidget(self.btnFish)
         Vlayout.addLayout(Hlayout)
-        Vlayout.addWidget(self.buttonBox)
         self.groupBox3.setLayout(Vlayout)
 
     def apply(self):
