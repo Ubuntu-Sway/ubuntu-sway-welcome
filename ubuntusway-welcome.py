@@ -44,7 +44,14 @@ class Window1(QWidget):
         self.setFixedSize(640, 420)
         self.setupUi()
         self.vbox = QVBoxLayout()
+        self.checkAutostart = QCheckBox("Autostart")
+        self.checkAutostart.toggled.connect(self.on_checked_autostart)
+
+        if Path(dest).is_file():
+            self.checkAutostart.setChecked(True)
+
         self.vbox.addWidget(self.groupBox)
+        self.vbox.addWidget(self.checkAutostart, 0, Qt.AlignRight)
         self.setLayout(self.vbox)
         self.show()
 
@@ -112,11 +119,6 @@ class Window1(QWidget):
         text = ["Want to learn more about the project? "
                 "Please find the links below."]
         label2.setText(text[0])
-        self.checkAutostart = QCheckBox("Autostart")
-        self.checkAutostart.toggled.connect(self.on_checked_autostart)
-
-        if Path(dest).is_file():
-            self.checkAutostart.setChecked(True)
 
         gridLayout.addWidget(self.btnWebsite, 1, 0, 1, 1)
         gridLayout.addWidget(self.btnWiki, 1, 1, 1, 1)
@@ -132,7 +134,6 @@ class Window1(QWidget):
         vboxLayout.addWidget(label, 0, Qt.AlignCenter)
         vboxLayout.addWidget(label2, 0, Qt.AlignCenter)
         vboxLayout.addLayout(gridLayout)
-        vboxLayout.addWidget(self.checkAutostart, 0, Qt.AlignRight)
         self.groupBox.setLayout(vboxLayout)
 
     def on_checked_autostart(self):
@@ -241,6 +242,11 @@ class Window2(QWidget):
         self.btnUpd.setIcon(self.iconUpd)
         self.btnUpd.clicked.connect(self.on_clicked_btnUpd)
 
+        self.btnTheme = QPushButton("Change GTK theme")
+        self.iconTheme = QIcon.fromTheme("preferences-desktop-theme")
+        self.btnTheme.setIcon(self.iconTheme)
+        self.btnTheme.clicked.connect(self.on_clicked_btnTheme)
+
         label = QLabel()
         pixmap = QPixmap("/usr/share/ubuntusway-welcome/logo.png")
         pixmap = pixmap.scaled(600, 300, Qt.KeepAspectRatio)
@@ -250,11 +256,12 @@ class Window2(QWidget):
         text = "Advanced options"
         label2.setText(text)
 
-        gridLayout2.addWidget(self.btnShell, 0, 0, 1, 1)
-        gridLayout2.addWidget(self.btnPrev, 2, 0, 1, 1)
-        gridLayout2.addWidget(self.btnQuit, 2, 2, 1, 1)
-        gridLayout2.addWidget(self.btnSoftware, 0, 1, 1, 1)
-        gridLayout2.addWidget(self.btnUpd, 0, 2, 1, 1)
+        gridLayout2.addWidget(self.btnShell, 1, 0, 1, 1)
+        gridLayout2.addWidget(self.btnTheme, 0, 0, 1, 1)
+        gridLayout2.addWidget(self.btnPrev, 3, 0, 1, 1)
+        gridLayout2.addWidget(self.btnQuit, 3, 2, 1, 1)
+        gridLayout2.addWidget(self.btnSoftware, 1, 1, 1, 1)
+        gridLayout2.addWidget(self.btnUpd, 1, 2, 1, 1)
 
         vboxLayout2.addWidget(label, 0, Qt.AlignCenter)
         vboxLayout2.addWidget(label2, 0, Qt.AlignCenter)
@@ -275,6 +282,9 @@ class Window2(QWidget):
         window1 = Window1()
         widget.addWidget(window1)
         widget.setCurrentIndex(widget.currentIndex()-1)
+
+    def on_clicked_btnTheme(self):
+        subprocess.run("nwg-look &", shell=True)
 
     def exitApp(self):
         app.exit()
