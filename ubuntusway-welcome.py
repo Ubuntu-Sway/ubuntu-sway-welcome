@@ -24,11 +24,12 @@ import subprocess
 import shutil
 from pathlib import Path
 from os.path import expanduser
+from i3ipc import Connection
 
 from PySide2.QtWidgets import (QApplication, QWidget, QPushButton, QVBoxLayout,
                                QDialog, QGroupBox, QGridLayout, QCheckBox,
-                               QRadioButton, QLabel, QStackedWidget,
-                               QDialogButtonBox, QHBoxLayout)
+                               QRadioButton, QLabel, QStackedWidget, QFileDialog,
+                               QDialogButtonBox, QHBoxLayout, QLineEdit)
 from PySide2.QtGui import QPixmap, QIcon
 from PySide2.QtCore import Qt
 
@@ -36,6 +37,7 @@ home = expanduser("~")
 user = os.getlogin()
 source = "/usr/share/applications/ubuntusway-welcome.desktop"
 dest = home + "/.config/autostart/ubuntusway-welcome.desktop"
+sway_config = home + "/.config/sway/config"
 
 
 class Window1(QWidget):
@@ -247,6 +249,11 @@ class Window2(QWidget):
         self.btnTheme.setIcon(self.iconTheme)
         self.btnTheme.clicked.connect(self.on_clicked_btnTheme)
 
+        self.btnScheme = QPushButton("Change Color Scheme")
+        self.iconScheme = QIcon.fromTheme("preferences-desktop-theme")
+        self.btnScheme.setIcon(self.iconScheme)
+        self.btnScheme.clicked.connect(self.on_clicked_btnScheme)
+
         label = QLabel()
         pixmap = QPixmap("/usr/share/ubuntusway-welcome/logo.png")
         pixmap = pixmap.scaled(600, 300, Qt.KeepAspectRatio)
@@ -258,6 +265,7 @@ class Window2(QWidget):
 
         gridLayout2.addWidget(self.btnShell, 1, 0, 1, 1)
         gridLayout2.addWidget(self.btnTheme, 0, 0, 1, 1)
+        gridLayout2.addWidget(self.btnScheme, 0, 1, 1, 1)
         gridLayout2.addWidget(self.btnPrev, 3, 0, 1, 1)
         gridLayout2.addWidget(self.btnQuit, 3, 2, 1, 1)
         gridLayout2.addWidget(self.btnSoftware, 1, 1, 1, 1)
@@ -285,6 +293,10 @@ class Window2(QWidget):
 
     def on_clicked_btnTheme(self):
         subprocess.run("nwg-look &", shell=True)
+
+    def on_clicked_btnScheme(self):
+        self.scheme = ColorSchemeSelect()
+        self.scheme.show
 
     def exitApp(self):
         app.exit()
@@ -334,6 +346,72 @@ class ShellSelectWindow(QWidget):
         else:
             self.shell = "/usr/bin/zsh"
             subprocess.run(["pkexec", "chsh", "-s", self.shell, user])
+
+    def cancel(self):
+        self.close()
+
+class ColorSchemeSelect(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setFixedSize(400, 150)
+        self.setWindowTitle("Change Color Scheme")
+        self.setupUi()
+        self.vbox4 = QVBoxLayout()
+        self.buttonBox = QDialogButtonBox()
+        self.btnApply = QPushButton("Apply")
+        self.btnClose = QPushButton("Close")
+        self.btnApply.setEnabled(False)
+        self.btnApply.clicked.connect(self.applyScheme)
+        self.btnClose.clicked.connect(self.cancel)
+        self.buttonBox.addButton(self.btnApply, QDialogButtonBox.AcceptRole)
+        self.buttonBox.addButton(self.btnClose, QDialogButtonBox.RejectRole)
+        self.vbox4.addWidget(self.groupBox4)
+        self.vbox4.addWidget(self.buttonBox)
+        self.setLayout(self.vbox4)
+        self.show()
+
+    def setupUi(self):
+        Hlayout = QHBoxLayout()
+        Vlayout = QVBoxLayout()
+
+        self.groupBox4 = QGroupBox("Select color scheme direcotry:")
+
+        self.schemePath = QLineEdit()
+        self.selectBtn = QPushButton("Choose")
+        self.selectBtn.clicked.connect(self.openDialog)
+
+        Hlayout.addWidget(self.schemePath)
+        Hlayout.addWidget(self.selectBtn)
+        Vlayout.addLayout(Hlayout)
+        self.groupBox4.setLayout(Vlayout)
+
+    def openDialog(self):
+        dialog = QFileDialog.getExistingDirectory(self, 'Select color scheme directory', '/usr/share/ubuntusway/themes')
+
+        if dialog:
+            self.schemePath.setText(dialog)
+            self.btnApply.setEnabled(True)
+
+    def applyScheme(self):
+        scheme_directory = self.schemePath.text()
+
+        with open(sway_config, "r") as f:
+            lines = f.readlines()
+            for i in range(len(lines)):
+                if "set $theme" in lines[i]:
+                    line = lines[i].strip()
+
+        scheme_path = line.replace(str(line), 'set $theme ' + str(scheme_directory))
+
+        with open(sway_config, "r+") as w:
+            conf = w.read()
+            new_scheme = conf.replace(str(line), str(scheme_path))
+            w.seek(0)
+            w.truncate()
+            w.write(new_scheme)
+
+        i3 = Connection()
+        i3.command('reload')
 
     def cancel(self):
         self.close()
