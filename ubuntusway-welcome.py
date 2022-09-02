@@ -401,11 +401,11 @@ class ColorSchemeSelect(QWidget):
                 if "set $theme" in lines[i]:
                     line = lines[i].strip()
 
-        scheme_path = line.replace(str(line), 'set $theme ' + str(scheme_directory))
+        scheme_path = f'set $theme {scheme_directory}'
 
         with open(sway_config, "r+") as w:
             conf = w.read()
-            new_scheme = conf.replace(str(line), str(scheme_path))
+            new_scheme = conf.replace(line, scheme_path)
             w.seek(0)
             w.truncate()
             w.write(new_scheme)
