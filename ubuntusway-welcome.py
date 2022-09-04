@@ -418,7 +418,7 @@ class ColorSchemeSelect(QWidget):
 
 
 if __name__ == "__main__":
-    app = QApplication([])
+    app = QApplication(["Welcome to Ubuntu Sway Remix!"])
     widget = QStackedWidget()
     window1 = Window1()
     window2 = Window2()
