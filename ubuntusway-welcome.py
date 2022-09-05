@@ -40,20 +40,12 @@ dest = home + "/.config/autostart/ubuntusway-welcome.desktop"
 sway_config = home + "/.config/sway/config"
 
 
-class Window1(QWidget):
+class Page1(QWidget):
     def __init__(self):
         super().__init__()
-        self.setFixedSize(640, 420)
         self.setupUi()
         self.vbox = QVBoxLayout()
-        self.checkAutostart = QCheckBox("Autostart")
-        self.checkAutostart.toggled.connect(self.on_checked_autostart)
-
-        if Path(dest).is_file():
-            self.checkAutostart.setChecked(True)
-
         self.vbox.addWidget(self.groupBox)
-        self.vbox.addWidget(self.checkAutostart, 0, Qt.AlignRight)
         self.setLayout(self.vbox)
         self.show()
 
@@ -138,13 +130,6 @@ class Window1(QWidget):
         vboxLayout.addLayout(gridLayout)
         self.groupBox.setLayout(vboxLayout)
 
-    def on_checked_autostart(self):
-        if self.checkAutostart.isChecked():
-            if Path(dest).is_file() is False:
-                shutil.copy(source, dest)
-        else:
-            os.unlink(dest)
-
     def on_clicked_btnInstall(self):
         msg = WarningMessage()
         if Path(f"/usr/bin/calamares").is_file() and user == "ubuntu":
@@ -174,9 +159,9 @@ class Window1(QWidget):
         subprocess.run(["xdg-open", "https://matrix.to/#/#ubuntusway:matrix.org"])
 
     def on_clicked_next(self):
-        window2 = Window2()
-        widget.addWidget(window2)
-        widget.setCurrentIndex(widget.currentIndex()+1)
+        page2 = Page2()
+        stackWidget.addWidget(page2)
+        stackWidget.setCurrentIndex(stackWidget.currentIndex()+1)
 
     def exitApp(self):
         app.exit()
@@ -204,10 +189,9 @@ class WarningMessage(QDialog):
         self.setLayout(self.layout)
 
 
-class Window2(QWidget):
+class Page2(QWidget):
     def __init__(self):
         super().__init__()
-        self.setFixedSize(640, 420)
         self.setupUi()
         self.vbox2 = QVBoxLayout()
         self.vbox2.addWidget(self.groupBox2)
@@ -287,9 +271,9 @@ class Window2(QWidget):
         self.select.show()
 
     def on_clicked_previous(self):
-        window1 = Window1()
-        widget.addWidget(window1)
-        widget.setCurrentIndex(widget.currentIndex()-1)
+        page1 = Page1()
+        stackWidget.addWidget(page1)
+        stackWidget.setCurrentIndex(stackWidget.currentIndex()-1)
 
     def on_clicked_btnTheme(self):
         subprocess.run("nwg-look &", shell=True)
@@ -419,12 +403,34 @@ class ColorSchemeSelect(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(["Welcome to Ubuntu Sway Remix!"])
-    widget = QStackedWidget()
-    window1 = Window1()
-    window2 = Window2()
-    widget.addWidget(window1)
-    widget.addWidget(window2)
-    widget.setFixedHeight(420)
-    widget.setFixedWidth(640)
-    widget.show()
+
+    def on_checked_autostart():
+        if checkAutostart.isChecked():
+            if Path(dest).is_file() is False:
+                shutil.copy(source, dest)
+        else:
+            os.unlink(dest)
+
+    checkAutostart = QCheckBox("Autostart")
+    checkAutostart.toggled.connect(on_checked_autostart)
+
+    if Path(dest).is_file():
+            checkAutostart.setChecked(True)
+
+    window = QWidget()
+    window.setFixedSize(650, 430)
+
+    layout = QVBoxLayout()
+
+    stackWidget = QStackedWidget()
+    page1 = Page1()
+    page2 = Page2()
+    stackWidget.addWidget(page1)
+    stackWidget.addWidget(page2)
+
+    layout.addWidget(stackWidget)
+    layout.addWidget(checkAutostart, 0, Qt.AlignRight)
+    window.setLayout(layout)
+
+    window.show()
     sys.exit(app.exec_())
