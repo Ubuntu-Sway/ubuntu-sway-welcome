@@ -13,4 +13,5 @@ Depends: ${misc:Depends},
          python3-pyside2.qtwidgets,
          python3-pyside2.qtgui,
          python3-pyside2.qtcore,
+         python3-i3ipc
 Description: welcome app for Ubuntu Sway
