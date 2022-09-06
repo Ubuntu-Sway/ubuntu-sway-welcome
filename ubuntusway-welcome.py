@@ -238,6 +238,11 @@ class Page2(QWidget):
         self.btnScheme.setIcon(self.iconScheme)
         self.btnScheme.clicked.connect(self.on_clicked_btnScheme)
 
+        self.btnDisplays = QPushButton("Display settings")
+        self.iconDisplays = QIcon.fromTheme("video-display")
+        self.btnDisplays.setIcon(self.iconDisplays)
+        self.btnDisplays.clicked.connect(self.on_clicked_btnDisplays)
+
         label = QLabel()
         pixmap = QPixmap("/usr/share/ubuntusway-welcome/logo.png")
         pixmap = pixmap.scaled(600, 300, Qt.KeepAspectRatio)
@@ -254,6 +259,7 @@ class Page2(QWidget):
         gridLayout2.addWidget(self.btnQuit, 3, 2, 1, 1)
         gridLayout2.addWidget(self.btnSoftware, 1, 1, 1, 1)
         gridLayout2.addWidget(self.btnUpd, 1, 2, 1, 1)
+        gridLayout2.addWidget(self.btnDisplays, 0, 2, 1, 1)
 
         vboxLayout2.addWidget(label, 0, Qt.AlignCenter)
         vboxLayout2.addWidget(label2, 0, Qt.AlignCenter)
@@ -281,6 +287,9 @@ class Page2(QWidget):
     def on_clicked_btnScheme(self):
         self.scheme = ColorSchemeSelect()
         self.scheme.show
+
+    def on_clicked_btnDisplays(self):
+        subprocess.run("nwg-displays &", shell=True)
 
     def exitApp(self):
         app.exit()
