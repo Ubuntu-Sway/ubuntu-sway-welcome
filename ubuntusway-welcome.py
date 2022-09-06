@@ -39,6 +39,7 @@ source = "/usr/share/applications/ubuntusway-welcome.desktop"
 dest = home + "/.config/autostart/ubuntusway-welcome.desktop"
 sway_config = home + "/.config/sway/config"
 
+i3 = Connection()
 
 class Page1(QWidget):
     def __init__(self):
@@ -267,10 +268,10 @@ class Page2(QWidget):
         self.groupBox2.setLayout(vboxLayout2)
 
     def on_clicked_btnSoftware(self):
-        subprocess.run("gpk-application &", shell=True)
+        i3.command('exec gpk-application')
 
     def on_clicked_btnUpd(self):
-        subprocess.run("gpk-update-viewer &", shell=True)
+        i3.command('exec gpk-update-viewer')
 
     def on_clicked_btnShell(self):
         self.select = ShellSelectWindow()
@@ -282,14 +283,14 @@ class Page2(QWidget):
         stackWidget.setCurrentIndex(stackWidget.currentIndex()-1)
 
     def on_clicked_btnTheme(self):
-        subprocess.run("nwg-look &", shell=True)
+        i3.command('exec nwg-look')
 
     def on_clicked_btnScheme(self):
         self.scheme = ColorSchemeSelect()
         self.scheme.show
 
     def on_clicked_btnDisplays(self):
-        subprocess.run("nwg-displays &", shell=True)
+        i3.command('exec nwg-displays')
 
     def exitApp(self):
         app.exit()
@@ -403,7 +404,6 @@ class ColorSchemeSelect(QWidget):
             w.truncate()
             w.write(new_scheme)
 
-        i3 = Connection()
         i3.command('reload')
 
     def cancel(self):
