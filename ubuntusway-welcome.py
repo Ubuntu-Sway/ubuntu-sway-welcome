@@ -134,7 +134,7 @@ class Page1(QWidget):
     def on_clicked_btnInstall(self):
         msg = WarningMessage()
         if Path(f"/usr/bin/calamares").is_file() and user == "ubuntu":
-            subprocess.run("sudo -E /usr/bin/calamares -d -style Fusion &", shell=True)
+            i3.command("/usr/bin/install-ubuntusway.sh")
         else:
             msg.exec()
 
