@@ -1,3 +1,9 @@
+ubuntusway-welcome (1.1.1~kinetic) kinetic; urgency=medium
+
+  * Remove .sh from helper script name
+
+ -- Aleksey Samoilov <samoilov.lex@gmail.com>  Wed, 07 Sep 2022 11:53:13 +0400
+
 ubuntusway-welcome (1.1~kinetic) kinetic; urgency=medium
 
   * Run Calamares through helper script
