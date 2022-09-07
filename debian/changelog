@@ -1,3 +1,10 @@
+ubuntusway-welcome (1.1~kinetic) kinetic; urgency=medium
+
+  * Run Calamares through helper script
+  * Fix desktop file
+
+ -- Aleksey Samoilov <samoilov.lex@gmail.com>  Wed, 07 Sep 2022 11:30:29 +0400
+
 ubuntusway-welcome (1.0~kinetic) kinetic; urgency=medium
 
   * First stable release
