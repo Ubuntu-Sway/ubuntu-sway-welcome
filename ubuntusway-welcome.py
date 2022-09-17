@@ -219,7 +219,7 @@ class Page2(QWidget):
         self.btnQuit.setIcon(self.iconQuit)
         self.btnQuit.clicked.connect(self.exitApp)
 
-        self.btnSoftware = QPushButton("Install software")
+        self.btnSoftware = QPushButton("Install Software")
         self.iconSoftware = QIcon.fromTheme("system-software-install")
         self.btnSoftware.setIcon(self.iconSoftware)
         self.btnSoftware.clicked.connect(self.on_clicked_btnSoftware)
@@ -239,10 +239,15 @@ class Page2(QWidget):
         self.btnScheme.setIcon(self.iconScheme)
         self.btnScheme.clicked.connect(self.on_clicked_btnScheme)
 
-        self.btnDisplays = QPushButton("Display settings")
+        self.btnDisplays = QPushButton("Display Settings")
         self.iconDisplays = QIcon.fromTheme("video-display")
         self.btnDisplays.setIcon(self.iconDisplays)
         self.btnDisplays.clicked.connect(self.on_clicked_btnDisplays)
+
+        self.btnInput = QPushButton("Input Settings")
+        self.iconInput = QIcon.fromTheme("input-keyboard")
+        self.btnInput.setIcon(self.iconInput)
+        self.btnInput.clicked.connect(self.on_clicked_btnInput)
 
         label = QLabel()
         pixmap = QPixmap("/usr/share/ubuntusway-welcome/logo.png")
@@ -257,6 +262,7 @@ class Page2(QWidget):
         gridLayout2.addWidget(self.btnTheme, 0, 0, 1, 1)
         gridLayout2.addWidget(self.btnScheme, 0, 1, 1, 1)
         gridLayout2.addWidget(self.btnPrev, 3, 0, 1, 1)
+        gridLayout2.addWidget(self.btnInput, 3, 1, 1, 1)
         gridLayout2.addWidget(self.btnQuit, 3, 2, 1, 1)
         gridLayout2.addWidget(self.btnSoftware, 1, 1, 1, 1)
         gridLayout2.addWidget(self.btnUpd, 1, 2, 1, 1)
@@ -291,6 +297,9 @@ class Page2(QWidget):
 
     def on_clicked_btnDisplays(self):
         i3.command('exec nwg-displays')
+
+    def on_clicked_btnInput(self):
+        subprocess.run("sway-input-config &", shell=True)
 
     def exitApp(self):
         app.exit()
