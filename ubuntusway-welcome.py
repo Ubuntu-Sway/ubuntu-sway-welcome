@@ -28,8 +28,9 @@ from i3ipc import Connection
 
 from PySide2.QtWidgets import (QApplication, QWidget, QPushButton, QVBoxLayout,
                                QDialog, QGroupBox, QGridLayout, QCheckBox,
-                               QRadioButton, QLabel, QStackedWidget, QFileDialog,
-                               QDialogButtonBox, QHBoxLayout, QLineEdit)
+                               QRadioButton, QLabel, QStackedWidget,
+                               QFileDialog, QDialogButtonBox, QHBoxLayout,
+                               QLineEdit)
 from PySide2.QtGui import QPixmap, QIcon
 from PySide2.QtCore import Qt
 
@@ -40,6 +41,7 @@ dest = home + "/.config/autostart/ubuntusway-welcome.desktop"
 sway_config = home + "/.config/sway/config"
 
 i3 = Connection()
+
 
 class Page1(QWidget):
     def __init__(self):
@@ -133,7 +135,7 @@ class Page1(QWidget):
 
     def on_clicked_btnInstall(self):
         msg = WarningMessage()
-        if Path(f"/usr/bin/calamares").is_file() and user == "ubuntu":
+        if Path(f'{"/usr/bin/calamares"}').is_file() and user == "ubuntu":
             i3.command('exec /usr/bin/install-ubuntusway')
         else:
             msg.exec()
@@ -353,6 +355,7 @@ class ShellSelectWindow(QWidget):
     def cancel(self):
         self.close()
 
+
 class ColorSchemeSelect(QWidget):
     def __init__(self):
         super().__init__()
@@ -433,7 +436,7 @@ if __name__ == "__main__":
     checkAutostart.toggled.connect(on_checked_autostart)
 
     if Path(dest).is_file():
-            checkAutostart.setChecked(True)
+        checkAutostart.setChecked(True)
 
     window = QWidget()
     window.setFixedSize(650, 430)
