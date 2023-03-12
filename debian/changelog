@@ -1,3 +1,9 @@
+ubuntu-sway-welcome (1.1.5~lunar) lunar; urgency=medium
+
+  * Rename desktop file
+
+ -- Aleksey Samoilov <samoilov.lex@gmail.com>  Sun, 12 Mar 2023 14:35:39 +0400
+
 ubuntu-sway-welcome (1.1.4~lunar) lunar; urgency=medium
 
   * Rename package
