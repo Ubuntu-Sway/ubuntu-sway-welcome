@@ -1,13 +1,13 @@
-Source: ubuntusway-welcome
+Source: ubuntu-sway-welcome
 Section: x11
 Priority: optional
 Maintainer: Aleksey Samoilov <samoilov.lex@gmail.com>
 Build-Depends: debhelper-compat (= 13)
 Standards-Version: 4.5.1
-Homepage: https://github.com/Ubuntu-Sway/ubuntusway-welcome
+Homepage: https://github.com/Ubuntu-Sway/ubuntu-sway-welcome
 Rules-Requires-Root: no
 
-Package: ubuntusway-welcome
+Package: ubuntu-sway-welcome
 Architecture: any
 Depends: ${misc:Depends},
          python3-pyside2.qtwidgets,
