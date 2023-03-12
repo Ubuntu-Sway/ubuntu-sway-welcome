@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Ubuntu Sway Welcome
-Exec=/usr/bin/ubuntusway-welcome.py
-Icon=ubuntusway.png
+Exec=/usr/bin/ubuntu-sway-welcome.py
+Icon=ubuntu-sway.png
 Type=Application
 Terminal=false
 Categories=Settings;

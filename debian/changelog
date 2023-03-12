@@ -1,3 +1,9 @@
+ubuntusway-welcome (1.1.4~lunar) lunar; urgency=medium
+
+  * Rename package
+
+ -- Aleksey Samoilov <samoilov.lex@gmail.com>  Sun, 12 Mar 2023 14:29:39 +0400
+
 ubuntusway-welcome (1.1.2~kinetic) kinetic; urgency=medium
 
   * Fix running calamares
