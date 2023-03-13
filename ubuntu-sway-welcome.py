@@ -36,8 +36,8 @@ from PySide2.QtCore import Qt
 
 home = expanduser("~")
 user = os.getlogin()
-source = "/usr/share/applications/ubuntusway-welcome.desktop"
-dest = home + "/.config/autostart/ubuntusway-welcome.desktop"
+source = "/usr/share/applications/ubuntu-sway-welcome.desktop"
+dest = home + "/.config/autostart/ubuntu-sway-welcome.desktop"
 sway_config = home + "/.config/sway/config"
 
 i3 = Connection()
@@ -108,7 +108,7 @@ class Page1(QWidget):
         self.btnGparted.clicked.connect(self.on_clicked_btnGparted)
 
         label = QLabel()
-        pixmap = QPixmap("/usr/share/ubuntusway-welcome/logo.png")
+        pixmap = QPixmap("/usr/share/ubuntu-sway-welcome/logo.png")
         pixmap = pixmap.scaled(600, 300, Qt.KeepAspectRatio)
         label.setPixmap(pixmap)
 
@@ -136,7 +136,7 @@ class Page1(QWidget):
     def on_clicked_btnInstall(self):
         msg = WarningMessage()
         if Path(f'{"/usr/bin/calamares"}').is_file() and user == "ubuntu":
-            i3.command('exec /usr/bin/install-ubuntusway')
+            i3.command('exec /usr/bin/install-ubuntu-sway')
         else:
             msg.exec()
 
@@ -252,7 +252,7 @@ class Page2(QWidget):
         self.btnInput.clicked.connect(self.on_clicked_btnInput)
 
         label = QLabel()
-        pixmap = QPixmap("/usr/share/ubuntusway-welcome/logo.png")
+        pixmap = QPixmap("/usr/share/ubuntu-sway-welcome/logo.png")
         pixmap = pixmap.scaled(600, 300, Qt.KeepAspectRatio)
         label.setPixmap(pixmap)
 
