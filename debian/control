@@ -2,7 +2,7 @@ Source: ubuntu-sway-welcome
 Section: x11
 Priority: optional
 Maintainer: Aleksey Samoilov <samoilov.lex@gmail.com>
-Build-Depends: debhelper-compat (= 13)
+Build-Depends: debhelper-compat (= 13), dh-python, python3-setuptools, python3
 Standards-Version: 4.5.1
 Homepage: https://github.com/Ubuntu-Sway/ubuntu-sway-welcome
 Rules-Requires-Root: no
