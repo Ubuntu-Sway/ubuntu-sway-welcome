@@ -3,14 +3,14 @@
 ################################################################################
 ## Form generated from reading UI file 'mainwindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.3
+## Created by: Qt User Interface Compiler version 5.15.8
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide2.QtCore import *
-from PySide2.QtGui import *
-from PySide2.QtWidgets import *
+from PySide2.QtCore import *  # type: ignore
+from PySide2.QtGui import *  # type: ignore
+from PySide2.QtWidgets import *  # type: ignore
 
 
 class Ui_MainWindow(object):
@@ -63,49 +63,91 @@ class Ui_MainWindow(object):
         self.gridLayout.setObjectName(u"gridLayout")
         self.btnInstall = QPushButton(self.groupBox)
         self.btnInstall.setObjectName(u"btnInstall")
-        icon = QIcon(QIcon.fromTheme(u"system-software-install"))
+        icon = QIcon()
+        iconThemeName = u"system-software-install"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon = QIcon.fromTheme(iconThemeName)
+        else:
+            icon.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.btnInstall.setIcon(icon)
 
         self.gridLayout.addWidget(self.btnInstall, 0, 0, 1, 2)
 
         self.btnGparted = QPushButton(self.groupBox)
         self.btnGparted.setObjectName(u"btnGparted")
-        icon1 = QIcon(QIcon.fromTheme(u"drive-harddisk"))
+        icon1 = QIcon()
+        iconThemeName = u"drive-harddisk"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon1 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon1.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.btnGparted.setIcon(icon1)
 
         self.gridLayout.addWidget(self.btnGparted, 0, 2, 1, 2)
 
         self.btnWebsite = QPushButton(self.groupBox)
         self.btnWebsite.setObjectName(u"btnWebsite")
-        icon2 = QIcon(QIcon.fromTheme(u"applications-internet"))
+        icon2 = QIcon()
+        iconThemeName = u"applications-internet"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon2 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon2.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.btnWebsite.setIcon(icon2)
 
         self.gridLayout.addWidget(self.btnWebsite, 1, 0, 1, 1)
 
         self.btnWiki = QPushButton(self.groupBox)
         self.btnWiki.setObjectName(u"btnWiki")
-        icon3 = QIcon(QIcon.fromTheme(u"x-office-address-book"))
+        icon3 = QIcon()
+        iconThemeName = u"x-office-address-book"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon3 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon3.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.btnWiki.setIcon(icon3)
 
         self.gridLayout.addWidget(self.btnWiki, 1, 1, 1, 1)
 
         self.btnIssue = QPushButton(self.groupBox)
         self.btnIssue.setObjectName(u"btnIssue")
-        icon4 = QIcon(QIcon.fromTheme(u"dialog-warning"))
+        icon4 = QIcon()
+        iconThemeName = u"dialog-warning"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon4 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon4.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.btnIssue.setIcon(icon4)
 
         self.gridLayout.addWidget(self.btnIssue, 1, 2, 1, 1)
 
         self.btnContrib = QPushButton(self.groupBox)
         self.btnContrib.setObjectName(u"btnContrib")
-        icon5 = QIcon(QIcon.fromTheme(u"applications-development"))
+        icon5 = QIcon()
+        iconThemeName = u"applications-development"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon5 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon5.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.btnContrib.setIcon(icon5)
 
         self.gridLayout.addWidget(self.btnContrib, 1, 3, 1, 1)
 
         self.btnChat = QPushButton(self.groupBox)
         self.btnChat.setObjectName(u"btnChat")
-        icon6 = QIcon(QIcon.fromTheme(u"user-available"))
+        icon6 = QIcon()
+        iconThemeName = u"user-available"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon6 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon6.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.btnChat.setIcon(icon6)
 
         self.gridLayout.addWidget(self.btnChat, 2, 0, 1, 1)
@@ -118,14 +160,26 @@ class Ui_MainWindow(object):
 
         self.btnQuit = QPushButton(self.groupBox)
         self.btnQuit.setObjectName(u"btnQuit")
-        icon7 = QIcon(QIcon.fromTheme(u"application-exit"))
+        icon7 = QIcon()
+        iconThemeName = u"application-exit"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon7 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon7.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.btnQuit.setIcon(icon7)
 
         self.gridLayout.addWidget(self.btnQuit, 2, 2, 1, 1)
 
         self.btnNext = QPushButton(self.groupBox)
         self.btnNext.setObjectName(u"btnNext")
-        icon8 = QIcon(QIcon.fromTheme(u"go-next"))
+        icon8 = QIcon()
+        iconThemeName = u"go-next"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon8 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon8.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.btnNext.setIcon(icon8)
 
         self.gridLayout.addWidget(self.btnNext, 2, 3, 1, 1)
@@ -165,7 +219,13 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.btnPrev = QPushButton(self.groupBox_2)
         self.btnPrev.setObjectName(u"btnPrev")
-        icon9 = QIcon(QIcon.fromTheme(u"go-previous"))
+        icon9 = QIcon()
+        iconThemeName = u"go-previous"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon9 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon9.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.btnPrev.setIcon(icon9)
 
         self.gridLayout_2.addWidget(self.btnPrev, 2, 0, 1, 1)
@@ -178,42 +238,79 @@ class Ui_MainWindow(object):
 
         self.btnShell = QPushButton(self.groupBox_2)
         self.btnShell.setObjectName(u"btnShell")
-        icon10 = QIcon(QIcon.fromTheme(u"utilities-terminal"))
+        icon10 = QIcon()
+        iconThemeName = u"utilities-terminal"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon10 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon10.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.btnShell.setIcon(icon10)
 
         self.gridLayout_2.addWidget(self.btnShell, 1, 0, 1, 1)
 
         self.btnUpd = QPushButton(self.groupBox_2)
         self.btnUpd.setObjectName(u"btnUpd")
-        icon11 = QIcon(QIcon.fromTheme(u"system-software-update"))
+        icon11 = QIcon()
+        iconThemeName = u"system-software-update"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon11 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon11.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.btnUpd.setIcon(icon11)
 
         self.gridLayout_2.addWidget(self.btnUpd, 1, 2, 1, 1)
 
         self.btnInput = QPushButton(self.groupBox_2)
         self.btnInput.setObjectName(u"btnInput")
-        icon12 = QIcon(QIcon.fromTheme(u"input-keyboard"))
+        icon12 = QIcon()
+        iconThemeName = u"input-keyboard"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon12 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon12.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.btnInput.setIcon(icon12)
 
         self.gridLayout_2.addWidget(self.btnInput, 2, 1, 1, 1)
 
         self.btnTheme = QPushButton(self.groupBox_2)
         self.btnTheme.setObjectName(u"btnTheme")
-        icon13 = QIcon(QIcon.fromTheme(u"preferences-desktop-theme"))
+        icon13 = QIcon()
+        iconThemeName = u"preferences-desktop-theme"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon13 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon13.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
         self.btnTheme.setIcon(icon13)
 
         self.gridLayout_2.addWidget(self.btnTheme, 0, 0, 1, 1)
 
-        self.btnScheme = QPushButton(self.groupBox_2)
-        self.btnScheme.setObjectName(u"btnScheme")
-        self.btnScheme.setIcon(icon13)
+        self.btnDrivers = QPushButton(self.groupBox_2)
+        self.btnDrivers.setObjectName(u"btnDrivers")
+        icon14 = QIcon()
+        iconThemeName = u"preferences-system"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon14 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon14.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
+        self.btnDrivers.setIcon(icon14)
 
-        self.gridLayout_2.addWidget(self.btnScheme, 0, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.btnDrivers, 0, 1, 1, 1)
 
         self.btnDisplays = QPushButton(self.groupBox_2)
         self.btnDisplays.setObjectName(u"btnDisplays")
-        icon14 = QIcon(QIcon.fromTheme(u"video-display"))
-        self.btnDisplays.setIcon(icon14)
+        icon15 = QIcon()
+        iconThemeName = u"video-display"
+        if QIcon.hasThemeIcon(iconThemeName):
+            icon15 = QIcon.fromTheme(iconThemeName)
+        else:
+            icon15.addFile(u".", QSize(), QIcon.Normal, QIcon.Off)
+        
+        self.btnDisplays.setIcon(icon15)
 
         self.gridLayout_2.addWidget(self.btnDisplays, 0, 2, 1, 1)
 
@@ -279,7 +376,7 @@ class Ui_MainWindow(object):
         self.btnUpd.setText(QCoreApplication.translate("MainWindow", u"Check for updates", None))
         self.btnInput.setText(QCoreApplication.translate("MainWindow", u"Input Settings", None))
         self.btnTheme.setText(QCoreApplication.translate("MainWindow", u"Change GTK theme", None))
-        self.btnScheme.setText(QCoreApplication.translate("MainWindow", u"Change Color Scheme", None))
+        self.btnDrivers.setText(QCoreApplication.translate("MainWindow", u"Additional Drivers", None))
         self.btnDisplays.setText(QCoreApplication.translate("MainWindow", u"Display Settings", None))
         self.btnSoftware.setText(QCoreApplication.translate("MainWindow", u"Install Software", None))
         self.checkAutostart.setText(QCoreApplication.translate("MainWindow", u"Autostart", None))

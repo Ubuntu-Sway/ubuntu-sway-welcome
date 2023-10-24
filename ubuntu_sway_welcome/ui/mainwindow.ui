@@ -102,7 +102,8 @@
                 <string>Run Calamaes Installer</string>
                </property>
                <property name="icon">
-                <iconset theme="system-software-install"/>
+                <iconset theme="system-software-install">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -112,7 +113,8 @@
                 <string>Run GParted</string>
                </property>
                <property name="icon">
-                <iconset theme="drive-harddisk"/>
+                <iconset theme="drive-harddisk">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -122,7 +124,8 @@
                 <string>Website</string>
                </property>
                <property name="icon">
-                <iconset theme="applications-internet"/>
+                <iconset theme="applications-internet">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -132,7 +135,8 @@
                 <string>Ubuntu Sway Wiki</string>
                </property>
                <property name="icon">
-                <iconset theme="x-office-address-book"/>
+                <iconset theme="x-office-address-book">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -142,7 +146,8 @@
                 <string>Issue Tracker</string>
                </property>
                <property name="icon">
-                <iconset theme="dialog-warning"/>
+                <iconset theme="dialog-warning">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -152,7 +157,8 @@
                 <string>Contribute</string>
                </property>
                <property name="icon">
-                <iconset theme="applications-development"/>
+                <iconset theme="applications-development">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -162,7 +168,8 @@
                 <string>Matrix Chat</string>
                </property>
                <property name="icon">
-                <iconset theme="user-available"/>
+                <iconset theme="user-available">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -172,7 +179,8 @@
                 <string>Sway Wiki</string>
                </property>
                <property name="icon">
-                <iconset theme="x-office-address-book"/>
+                <iconset theme="x-office-address-book">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -182,7 +190,8 @@
                 <string>Quit</string>
                </property>
                <property name="icon">
-                <iconset theme="application-exit"/>
+                <iconset theme="application-exit">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -192,7 +201,8 @@
                 <string>Next</string>
                </property>
                <property name="icon">
-                <iconset theme="go-next"/>
+                <iconset theme="go-next">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -249,7 +259,8 @@
                 <string>Previous</string>
                </property>
                <property name="icon">
-                <iconset theme="go-previous"/>
+                <iconset theme="go-previous">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -259,7 +270,8 @@
                 <string>Quit</string>
                </property>
                <property name="icon">
-                <iconset theme="application-exit"/>
+                <iconset theme="application-exit">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -269,7 +281,8 @@
                 <string>Change shell</string>
                </property>
                <property name="icon">
-                <iconset theme="utilities-terminal"/>
+                <iconset theme="utilities-terminal">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -279,7 +292,8 @@
                 <string>Check for updates</string>
                </property>
                <property name="icon">
-                <iconset theme="system-software-update"/>
+                <iconset theme="system-software-update">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -289,7 +303,8 @@
                 <string>Input Settings</string>
                </property>
                <property name="icon">
-                <iconset theme="input-keyboard"/>
+                <iconset theme="input-keyboard">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -299,17 +314,19 @@
                 <string>Change GTK theme</string>
                </property>
                <property name="icon">
-                <iconset theme="preferences-desktop-theme"/>
+                <iconset theme="preferences-desktop-theme">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QPushButton" name="btnScheme">
+              <widget class="QPushButton" name="btnDrivers">
                <property name="text">
-                <string>Change Color Scheme</string>
+                <string>Additional Drivers</string>
                </property>
                <property name="icon">
-                <iconset theme="preferences-desktop-theme"/>
+                <iconset theme="preferences-system">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -319,7 +336,8 @@
                 <string>Display Settings</string>
                </property>
                <property name="icon">
-                <iconset theme="video-display"/>
+                <iconset theme="video-display">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -329,7 +347,8 @@
                 <string>Install Software</string>
                </property>
                <property name="icon">
-                <iconset theme="system-software-install"/>
+                <iconset theme="system-software-install">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>

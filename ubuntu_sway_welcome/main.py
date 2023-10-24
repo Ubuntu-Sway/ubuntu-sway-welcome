@@ -31,7 +31,6 @@ from PySide2.QtCore import Qt
 from ubuntu_sway_welcome.ui_mainwindow import Ui_MainWindow
 from ubuntu_sway_welcome.ui_warning import Ui_WarningMessage
 from ubuntu_sway_welcome.ui_shell_select import Ui_shellSelect
-from ubuntu_sway_welcome.ui_color_scheme_select import Ui_colorSchemeSelect
 
 def get_config_home():
     config_home = os.getenv('XDG_CONFIG_HOME') if os.getenv('XDG_CONFIG_HOME') else os.path.join(
@@ -44,7 +43,6 @@ user = os.getlogin()
 desktop_file = os.path.join(dir_name, "resources/ubuntu-sway-welcome.desktop")
 autostart_dir = os.path.join(config_home, "autostart/")
 autostart_desktop_file = os.path.join(config_home, autostart_dir, "ubuntu-sway-welcome.desktop")
-sway_config = os.path.join(config_home, "sway", "config")
 
 i3 = Connection()
 
@@ -81,7 +79,7 @@ class MainWindow(QMainWindow):
 
         # Page 2
         self.ui.btnTheme.clicked.connect(self.on_clicked_btnTheme)
-        self.ui.btnScheme.clicked.connect(self.on_clicked_btnScheme)
+        self.ui.btnDrivers.clicked.connect(self.on_clicked_btnDrivers)
         self.ui.btnDisplays.clicked.connect(self.on_clicked_btnDisplays)
         self.ui.btnShell.clicked.connect(self.on_clicked_btnShell)
         self.ui.btnSoftware.clicked.connect(self.on_clicked_btnSoftware)
@@ -132,10 +130,8 @@ class MainWindow(QMainWindow):
     def on_clicked_btnTheme(self):
         i3.command('exec nwg-look')
 
-    def on_clicked_btnScheme(self):
-        self.scheme = ColorSchemeSelectWindow()
-        self.scheme.setWindowTitle("Color scheme path")
-        self.scheme.show()
+    def on_clicked_btnDrivers(self):
+        subprocess.run("/usr/bin/software-properties-gtk --open-tab=4 &", shell=True)
 
     def on_clicked_btnDisplays(self):
         i3.command('exec nwg-displays')
@@ -202,43 +198,6 @@ class ShellSelectWindow(QWidget):
             self.shell = "/usr/bin/zsh"
             subprocess.run(["pkexec", "chsh", "-s", self.shell, user])
 
-
-class ColorSchemeSelectWindow(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.colorPath = Ui_colorSchemeSelect()
-        self.colorPath.setupUi(self)
-
-        self.colorPath.selectBtn.clicked.connect(self.openDialog)
-        self.btnApply = self.colorPath.buttonBox.button(QDialogButtonBox.Apply)
-        self.btnApply.clicked.connect(self.applyScheme)
-
-    def openDialog(self):
-        dialog = QFileDialog.getExistingDirectory(self, 'Select color scheme directory', '/usr/share/ubuntusway/themes')
-
-        if dialog:
-            self.colorPath.schemePath.setText(dialog)
-            self.btnApply.setEnabled(True)
-
-    def applyScheme(self):
-        scheme_directory = self.colorPath.schemePath.text()
-
-        with open(sway_config, "r") as f:
-            lines = f.readlines()
-            for i in range(len(lines)):
-                if "set $theme" in lines[i]:
-                    line = lines[i].strip()
-
-        scheme_path = f'set $theme {scheme_directory}'
-
-        with open(sway_config, "r+") as w:
-            conf = w.read()
-            new_scheme = conf.replace(line, scheme_path)
-            w.seek(0)
-            w.truncate()
-            w.write(new_scheme)
-
-        i3.command('reload')
 
 def main():
     app = QApplication(["Welcome to Ubuntu Sway Remix!"])
