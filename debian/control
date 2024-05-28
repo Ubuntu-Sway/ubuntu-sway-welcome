@@ -10,10 +10,9 @@ Rules-Requires-Root: no
 Package: ubuntu-sway-welcome
 Architecture: any
 Depends: ${misc:Depends},
-         python3-pyside2.qtwidgets,
-         python3-pyside2.qtgui,
-         python3-pyside2.qtcore,
-         python3-i3ipc
+         python3-pyqt6,
+         python3-i3ipc,
+         qt6-wayland
 Recommends: fish,
             gparted,
             zsh

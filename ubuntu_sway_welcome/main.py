@@ -24,10 +24,10 @@ import subprocess
 from pathlib import Path
 from i3ipc import Connection
 from shutil import copy2
-from PySide2.QtWidgets import (QApplication, QMainWindow, QDialog,
+from PyQt6.QtWidgets import (QApplication, QMainWindow, QDialog,
                                QWidget, QDialogButtonBox, QFileDialog)
-from PySide2.QtGui import QPixmap
-from PySide2.QtCore import Qt
+from PyQt6.QtGui import QPixmap
+from PyQt6.QtCore import Qt
 from ubuntu_sway_welcome.ui_mainwindow import Ui_MainWindow
 from ubuntu_sway_welcome.ui_warning import Ui_WarningMessage
 from ubuntu_sway_welcome.ui_shell_select import Ui_shellSelect
@@ -44,7 +44,7 @@ desktop_file = os.path.join(dir_name, "resources/ubuntu-sway-welcome.desktop")
 autostart_dir = os.path.join(config_home, "autostart/")
 autostart_desktop_file = os.path.join(config_home, autostart_dir, "ubuntu-sway-welcome.desktop")
 
-i3 = Connection()
+#i3 = Connection()
 
 
 class MainWindow(QMainWindow):
@@ -55,7 +55,7 @@ class MainWindow(QMainWindow):
 
         # Backgound logo
         bg_logo = os.path.join(dir_name, "resources/logo.png")
-        pixmap = QPixmap(bg_logo).scaled(600, 300, Qt.KeepAspectRatio)
+        pixmap = QPixmap(bg_logo).scaled(600, 300, Qt.AspectRatioMode.KeepAspectRatio)
         self.ui.bgLabel1.setPixmap(pixmap)
         self.ui.bgLabel2.setPixmap(pixmap)
 
@@ -117,10 +117,10 @@ class MainWindow(QMainWindow):
         subprocess.run(["xdg-open", "https://matrix.to/#/#ubuntusway:matrix.org"])
 
     def on_clicked_btnSoftware(self):
-        i3.command('exec gpk-application')
+        i3.command('exec gnome-software --mode=overview')
 
     def on_clicked_btnUpd(self):
-        i3.command('exec gpk-update-viewer')
+        i3.command('exec update-manager')
 
     def on_clicked_btnShell(self):
         self.select = ShellSelectWindow()
@@ -205,7 +205,7 @@ def main():
 
     win = MainWindow()
     win.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 if __name__ == "__main__":
     main()
