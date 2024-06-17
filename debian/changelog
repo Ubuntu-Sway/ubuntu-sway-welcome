@@ -1,3 +1,9 @@
+ubuntu-sway-welcome (1.4.1~noble) noble; urgency=medium
+
+  * Remove mistaken comment
+
+ -- Aleksey Samoilov <samoilov.lex@gmail.com>  Mon, 17 Jun 2024 23:49:28 +0400
+
 ubuntu-sway-welcome (1.4.0~noble) noble; urgency=medium
 
   * Switch to PyQt6

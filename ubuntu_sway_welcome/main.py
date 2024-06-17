@@ -44,7 +44,7 @@ desktop_file = os.path.join(dir_name, "resources/ubuntu-sway-welcome.desktop")
 autostart_dir = os.path.join(config_home, "autostart/")
 autostart_desktop_file = os.path.join(config_home, autostart_dir, "ubuntu-sway-welcome.desktop")
 
-#i3 = Connection()
+i3 = Connection()
 
 
 class MainWindow(QMainWindow):
