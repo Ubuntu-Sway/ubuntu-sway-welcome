@@ -184,7 +184,7 @@ class ShellSelectWindow(QWidget):
         elif defaultShell == "/bin/fish":
             self.shell_select.btnFish.setChecked(True)
 
-        self.btnApply = self.shell_select.buttonBox.button(QDialogButtonBox.Apply)
+        self.btnApply = self.shell_select.buttonBox.button(QDialogButtonBox.StandardButton.Apply)
         self.btnApply.clicked.connect(self.apply)
 
     def apply(self):
