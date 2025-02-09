@@ -24,6 +24,7 @@ class Ui_WarningMessage(object):
         self.verticalLayout = QtWidgets.QVBoxLayout(WarningMessage)
         self.verticalLayout.setObjectName("verticalLayout")
         self.label = QtWidgets.QLabel(parent=WarningMessage)
+        self.label.setWordWrap(True)
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
         self.buttonBox = QtWidgets.QDialogButtonBox(parent=WarningMessage)

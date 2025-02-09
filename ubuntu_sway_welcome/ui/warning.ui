@@ -37,6 +37,9 @@
      <property name="text">
       <string>Your system is already installed! If you wish to reinstall it, boot from the installation media.</string>
      </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
     </widget>
    </item>
    <item>
