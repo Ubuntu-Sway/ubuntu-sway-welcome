@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='ubuntu-sway-welcome',
-    version='1.4.0',
+    version='1.4.3',
     description='welcome app for Ubuntu Sway',
     license='GPL-3',
     author='Aleksey Samoilov',

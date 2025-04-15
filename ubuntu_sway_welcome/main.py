@@ -90,7 +90,7 @@ class MainWindow(QMainWindow):
     def on_clicked_btnInstall(self):
         self.msg = WarningMessage()
         self.msg.setWindowTitle("Warning!")
-        if Path(f'{"/usr/bin/calamares"}').is_file() and user == "ubuntu":
+        if Path(f'{"/usr/bin/calamares"}').is_file() and user == "ubuntu-sway":
             i3.command('exec /usr/bin/install-ubuntu-sway')
         else:
             self.msg.show()
