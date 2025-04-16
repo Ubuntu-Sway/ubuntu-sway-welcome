@@ -1,3 +1,9 @@
+ubuntu-sway-welcome (1.4.4) plucky; urgency=medium
+
+  * Runs installer with sudo
+
+ -- Aleksey Samoilov <samoilov.lex@gmail.com>  Wed, 16 Apr 2025 18:50:38 +0400
+
 ubuntu-sway-welcome (1.4.3) plucky; urgency=medium
 
   * Change livecd's username
